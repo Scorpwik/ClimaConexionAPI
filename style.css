@@ -1,34 +1,7 @@
-/* ==========================================================================
-   EXPLORADOR DE CLIMA - ESTILOS CSS3 (MODERNOS & RESPONSIVOS)
-   ========================================================================== */
-
-/* --- Variables y Reset --- */
-:root {
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --card-border: rgba(255, 255, 255, 0.12);
-  --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  
-  --primary: #38bdf8;
-  --primary-hover: #0284c7;
-  --accent: #818cf8;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  
-  --error-bg: rgba(239, 68, 68, 0.15);
-  --error-border: rgba(239, 68, 68, 0.4);
-  --error-text: #fca5a5;
-  
-  --warning-bg: rgba(245, 158, 11, 0.15);
-  --warning-border: rgba(245, 158, 11, 0.4);
-  --warning-text: #fcd34d;
-  
-  --radius-lg: 20px;
-  --radius-md: 12px;
-  --radius-pill: 50px;
-  
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/*
+ * Explorador de Clima — Estilos CSS
+ * Diseño limpio y funcional
+ */
 
 * {
   box-sizing: border-box;
@@ -37,477 +10,289 @@
 }
 
 body {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-gradient);
-  color: var(--text-main);
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #eef2f7;
+  color: #1a1a2e;
   min-height: 100vh;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
-  position: relative;
-  overflow-x: hidden;
+  padding: 2rem 1rem;
 }
 
-/* --- Fondos decorativos con brillo --- */
-.background-globes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.globe {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.25;
-}
-
-.globe-1 {
-  width: 350px;
-  height: 350px;
-  background: #38bdf8;
-  top: -50px;
-  left: -50px;
-}
-
-.globe-2 {
-  width: 400px;
-  height: 400px;
-  background: #818cf8;
-  bottom: -100px;
-  right: -100px;
-}
-
-/* --- Contenedor Principal --- */
-.app-container {
-  position: relative;
-  z-index: 1;
+.contenedor {
   width: 100%;
-  max-width: 540px;
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  box-shadow: var(--glass-shadow);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* --- Encabezado --- */
-.app-header {
+  max-width: 580px;
   text-align: center;
 }
 
-.app-header .logo {
-  font-size: 2.8rem;
-  color: var(--primary);
-  margin-bottom: 8px;
-  display: inline-block;
-  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.4));
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.app-header h1 {
-  font-size: 1.85rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.app-header .subtitle {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-/* --- Formulario de Búsqueda --- */
-.search-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.search-box {
-  display: flex;
-  gap: 10px;
-}
-
-.input-wrapper {
-  position: relative;
-  flex: 1;
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 1rem;
-}
-
-.input-wrapper input {
-  width: 100%;
-  padding: 12px 16px 12px 42px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  color: var(--text-main);
-  font-family: inherit;
-  font-size: 0.95rem;
-  outline: none;
-  transition: var(--transition);
-}
-
-.input-wrapper input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-  background: rgba(15, 23, 42, 0.8);
-}
-
-.btn-primary {
-  padding: 12px 20px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-  border: none;
-  border-radius: var(--radius-md);
-  color: #0f172a;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: var(--transition);
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-/* --- Mensaje de Validación --- */
-.validation-message {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  background: var(--warning-bg);
-  border: 1px solid var(--warning-border);
-  border-radius: var(--radius-md);
-  color: var(--warning-text);
-  font-size: 0.85rem;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* --- Estados (Carga y Error) --- */
-.state-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  border-radius: var(--radius-md);
-  text-align: center;
-  gap: 14px;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Indicador de Carga (Spinner) */
-.spinner {
-  width: 42px;
-  height: 42px;
-  border: 4px solid rgba(56, 189, 248, 0.2);
-  border-left-color: var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-#loading-state p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-/* Estado de Error (Estilo Alerta) */
-.error-card {
-  background: var(--error-bg);
-  border: 1px solid var(--error-border);
-  color: var(--error-text);
-}
-
-.error-icon {
+h1 {
   font-size: 2rem;
-  color: #ef4444;
+  margin-bottom: 0.3rem;
+  color: #1a1a2e;
 }
 
-.btn-retry {
-  padding: 8px 18px;
-  background: #ef4444;
+.subtitulo {
+  color: #555;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.fuente-api {
+  color: #888;
+  font-size: 0.78rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Formulario --- */
+.busqueda {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.busqueda input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 2px solid #c9d4e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.busqueda input:focus {
+  border-color: #3a7bd5;
+}
+
+.busqueda button {
+  padding: 0.7rem 1.3rem;
   border: none;
-  border-radius: var(--radius-pill);
-  color: #ffffff;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.85rem;
+  border-radius: 8px;
+  background: #3a7bd5;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: var(--transition);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  transition: background 0.2s;
 }
 
-.btn-retry:hover {
-  background: #dc2626;
-  transform: scale(1.05);
+.busqueda button:hover {
+  background: #2563b0;
 }
 
-/* --- Tarjeta de Clima Resaltada (Resultados) --- */
-.weather-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  animation: fadeIn 0.4s ease-out;
+.busqueda button:disabled {
+  background: #8fa8cc;
+  cursor: not-allowed;
 }
 
-.weather-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.city-info h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.city-info country {
+/* --- Validación --- */
+.msg-validacion {
+  text-align: left;
+  color: #c0392b;
   font-size: 0.85rem;
-  background: rgba(56, 189, 248, 0.2);
-  color: var(--primary);
-  padding: 2px 8px;
+  margin-bottom: 0.75rem;
+  background: #fdecea;
+  border: 1px solid #f5c6c2;
   border-radius: 6px;
-  font-weight: 600;
+  padding: 0.5rem 0.75rem;
 }
 
-.weather-date {
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  margin-top: 4px;
-}
-
-.temp-container {
+/* --- Zona de resultado --- */
+.resultado {
+  min-height: 180px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-.temp-main {
-  display: flex;
-  align-items: flex-start;
-}
-
-.temp-value {
-  font-size: 3.8rem;
-  font-weight: 700;
-  line-height: 1;
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.temp-unit {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-top: 4px;
-}
-
-.weather-condition {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.weather-icon {
-  width: 70px;
-  height: 70px;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-}
-
-.condition-text {
-  font-size: 0.95rem;
-  text-transform: capitalize;
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-/* Detalle de clima en rejilla */
-.weather-details-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 16px;
-}
-
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.4);
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.detail-item i {
-  font-size: 1.2rem;
-  color: var(--primary);
-}
-
-.detail-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.detail-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.detail-value {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-/* --- Historial de Búsquedas (Píldoras) --- */
-.history-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.history-section h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.history-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.history-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--card-border);
-  color: var(--text-main);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.history-pill:hover {
-  background: rgba(56, 189, 248, 0.2);
-  border-color: var(--primary);
-  color: var(--primary);
-  transform: translateY(-2px);
-}
-
-.history-pill:active {
-  transform: translateY(0);
-}
-
-.empty-history {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* --- Utilidades --- */
-.hidden {
+.oculto {
   display: none !important;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.mensaje {
+  color: #777;
+  text-align: center;
 }
 
-/* Responsividad */
-@media (max-width: 480px) {
-  .app-container {
-    padding: 24px 18px;
-  }
-  
-  .search-box {
+/* Spinner de carga */
+.spinner {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 0.6rem auto;
+  border: 4px solid #dde3ec;
+  border-top-color: #3a7bd5;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* Estado error */
+#estado-error p {
+  margin-bottom: 0.75rem;
+  color: #c0392b;
+}
+
+#btn-reintentar {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #c0392b;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+#btn-reintentar:hover {
+  background: #a93226;
+}
+
+/* --- Tarjeta de clima --- */
+.tarjeta {
+  background: white;
+  border: 1px solid #dde3ec;
+  border-radius: 12px;
+  padding: 1.25rem;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eef2f7;
+  padding-bottom: 0.75rem;
+}
+
+.tarjeta-header img {
+  width: 56px;
+  height: 56px;
+}
+
+.tarjeta-header h2 {
+  font-size: 1.3rem;
+  color: #1a1a2e;
+}
+
+.tarjeta-header .pais-codigo {
+  font-size: 0.82rem;
+  color: #3a7bd5;
+  background: #e8f0fc;
+  border-radius: 4px;
+  padding: 2px 6px;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.temp-grande {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #1a1a2e;
+  margin-bottom: 0.2rem;
+}
+
+.temp-descripcion {
+  font-size: 1rem;
+  color: #555;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.datos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.dato-item {
+  background: #f5f8fd;
+  border: 1px solid #dde3ec;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+.dato-item .etiqueta {
+  font-size: 0.75rem;
+  color: #888;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.dato-item .valor {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.fecha-clima {
+  font-size: 0.78rem;
+  color: #aaa;
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+/* --- Historial --- */
+.historial-seccion {
+  text-align: left;
+  border-top: 1px solid #dde3ec;
+  padding-top: 1rem;
+}
+
+.historial-seccion h3 {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+}
+
+.historial-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.historial-vacio {
+  font-size: 0.82rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.pildora {
+  background: white;
+  border: 1px solid #c9d4e0;
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.83rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  color: #1a1a2e;
+}
+
+.pildora:hover {
+  background: #e8f0fc;
+  border-color: #3a7bd5;
+  color: #3a7bd5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 460px) {
+  .busqueda {
     flex-direction: column;
   }
-  
-  .btn-primary {
-    justify-content: center;
-  }
-  
-  .weather-details-grid {
+
+  .datos-grid {
     grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.6rem;
   }
 }
